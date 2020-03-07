@@ -1,17 +1,7 @@
 import streamlit as st
-import numpy as np
-import pandas as pd
-from Requests import Requests
-import time
 from api import Api
-import json
-import pickle
 import datetime as dt
-from datetime import timezone
-import random
-import math
-import copy
-import datetime
+
 
 st.title("steemmonsters信息显示器")
 
@@ -24,7 +14,11 @@ for x in api.settings()["quests"]:
     quest_details[x["name"]] = x
 
 
-name = st.text_input('请输入账号',"player")
+name = st.text_input('请输入账号')
+name=name.split(",")
+
+
+
 
 print("___________________________________________")
 print("账户:",name)
@@ -152,15 +146,20 @@ def ms4(name):
 
     return battle_log
 
-if name != "player":
-    a = ms1(name)
-    a
-    st.header('__________________________')
-    b = ms2(name)
-    b
-    st.header('__________________________')
-    c = ms3(name)
-    c
-    st.header('__________________________')
-    d = ms4(name)
-    d
+num=0
+if name[0] != "":
+    for i in range(len(name)):
+        a = ms1(name[num])
+        a
+        st.header('__________________________')
+        b = ms2(name[num])
+        b
+        st.header('__________________________')
+        c = ms3(name[num])
+        c
+        st.header('__________________________')
+        d = ms4(name[num])
+        d
+        st.header('__________________________')
+        st.header('__________________________')
+        num += 1
